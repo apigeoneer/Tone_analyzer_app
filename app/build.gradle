@@ -47,4 +47,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     // IBM Watson
     implementation 'com.ibm.watson.developer_cloud:android-sdk:0.6.0'
+    // commons io
+    implementation 'commons-io:commons-io:2.9.0'
 }
