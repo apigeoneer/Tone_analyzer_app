@@ -22,7 +22,9 @@ class InputFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_input, container, false)
 
-
+        // we need to pass a date, so that the apt version of the tone analyser service is used
+        toneAnalyser = ToneAnalyzer("2021-05-31")
+        toneAnalyser.setApiKey(getString(R.string.tone_analyser_iam_apikey))
 
         return binding.root
     }
