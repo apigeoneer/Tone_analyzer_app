@@ -1,13 +1,17 @@
 package com.gmail.apigeoneer.toneanalyzer
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.HandlerCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.gmail.apigeoneer.toneanalyzer.databinding.FragmentInputBinding
+import com.ibm.watson.developer_cloud.dialog.v1.model.Message
 import com.ibm.watson.developer_cloud.http.ServiceCallback
 import com.ibm.watson.developer_cloud.tone_analyzer.v3.ToneAnalyzer
 import com.ibm.watson.developer_cloud.tone_analyzer.v3.model.Tone
@@ -20,6 +24,8 @@ class InputFragment : Fragment() {
     private lateinit var binding: FragmentInputBinding
 
     private lateinit var toneAnalyzer: ToneAnalyzer
+//    // This handler will only work for the message queue of the Input Fragment
+//    private lateinit var handler: Handler
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -67,11 +73,16 @@ class InputFragment : Fragment() {
                     val toastMessage = "Expressions expressed: $detectedTones"
 
                     /**
-                     * Since onResponse runs on a different thread
+                     * Since onResponse runs on a different thread, show the toast on the UI thread
                      */
-                    activity?.runOnUiThread(Runnable {
+                    activity!!.runOnUiThread(Runnable {                                           // can't use since not an activity
                         Toast.makeText(context, toastMessage, Toast.LENGTH_LONG).show()
                     })
+//                    handler.post(Runnable {
+//                        Toast.makeText(context, toastMessage, Toast.LENGTH_LONG).show()
+//                    })
+
+
                 }
 
             }
