@@ -75,12 +75,12 @@ class InputFragment : Fragment() {
                     /**
                      * Since onResponse runs on a different thread, show the toast on the UI thread
                      */
-                    activity!!.runOnUiThread(Runnable {                                           // can't use since not an activity
-                        Toast.makeText(context, toastMessage, Toast.LENGTH_LONG).show()
-                    })
-//                    handler.post(Runnable {
+//                    activity!!.runOnUiThread(Runnable {                                           // can't use since not an activity
 //                        Toast.makeText(context, toastMessage, Toast.LENGTH_LONG).show()
 //                    })
+                    Handler(Looper.getMainLooper()).post(Runnable {
+                        Toast.makeText(context, toastMessage, Toast.LENGTH_LONG).show()
+                    })
 
 
                 }
