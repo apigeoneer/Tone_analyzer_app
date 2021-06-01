@@ -29,6 +29,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        dataBinding true
+    }
 }
 
 dependencies {
@@ -42,4 +45,13 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    // Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:2.3.5"
+    implementation "androidx.navigation:navigation-ui-ktx:2.3.5"
+    // IBM Watson
+    implementation 'com.ibm.watson.developer_cloud:android-sdk:0.6.0'
+    // IBM Watson Java
+    implementation 'com.ibm.watson.developer_cloud:java-sdk:3.7.2'
+    // commons io
+    implementation 'commons-io:commons-io:2.9.0'
 }
